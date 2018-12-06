@@ -46,39 +46,45 @@ public class Conexion<T> {
 	}
 	
 	
-	public void insert(T o){
+	public boolean insert(T o){
 		try {
 			em.getTransaction().begin();
 			em.persist(o);
 			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}finally {
 			//em.close();
 		}
 		
 	}
 	
-	public void update(T o){
+	public boolean update(T o){
 		try {
 			em.getTransaction().begin();
 			em.merge(o);
 			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}finally {
 			//em.close();
 		}
 		
 	}
 	
-	public void delete(T o){
+	public boolean delete(T o){
 		try {
 			em.getTransaction().begin();
 			em.remove(o);
 			em.getTransaction().commit();
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}finally {
 			//em.close();
 		}

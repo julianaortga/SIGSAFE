@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UsuarioDao;
 import model.Usuario;
 
 /**
@@ -24,7 +25,68 @@ public class UsuarioServlet extends HttpServlet {
      */
     public UsuarioServlet() {
         super();
-        // TODO Auto-generated constructor stub
+    }
+    
+    protected void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	  	
+    	int seleccion = Integer.parseInt(request.getParameter("seleccion"));
+    	UsuarioDao myDao = new UsuarioDao();
+    	Usuario myU;
+    	String url = "";
+    	int id;
+    	
+    	if(seleccion == 1) { //Redireccionar a el formulario de usuarios (registrar y actualizar)
+    		url ="/WEB-INF/Usuario/formulario.jsp";
+    	
+    	}else if(seleccion == 2) { //Consultar todos los usuarios
+    		
+    		request.setAttribute("usuarios", myDao.list());
+    		url ="/WEB-INF/Usuario/consultarTodos.jsp";
+    		
+    	}else if(seleccion == 3) { //Consultar usuario por id
+    		
+    		id = Integer.parseInt(request.getParameter("idUsuario"));
+    		request.setAttribute("usuario", myDao.find(id));
+    		url ="/WEB-INF/Usuario/consultar.jsp";
+    		
+    	}else if(seleccion == 4) { //Registrar usuario
+    		
+    		String contrasena = request.getParameter("contrasena");
+    		String correo = request.getParameter("correo");
+    		String nombre = request.getParameter("nombre");
+    		String username = request.getParameter("username");
+    		
+    		myU = new Usuario(contrasena, correo, nombre, username);
+    		request.setAttribute("req",myDao.insert(myU));
+    		url ="/WEB-INF/Usuario/consultarTodos.jsp";
+    		
+    	}else if(seleccion == 5) { //Actualizar usuario
+    		
+    		id = Integer.parseInt(request.getParameter("idUsuario"));
+    		String contrasena = request.getParameter("contrasena");
+    		String correo = request.getParameter("correo");
+    		String nombre = request.getParameter("nombre");
+    		String username = request.getParameter("username");
+    		
+    		myU = new Usuario(id,contrasena, correo, nombre, username);
+    		request.setAttribute("req", myDao.update(myU));
+    		url ="/WEB-INF/Usuario/consultarTodos.jsp";
+    		
+    	}else if(seleccion == 6) { //Eliminar usuario
+    		
+    		id = Integer.parseInt(request.getParameter("idUsuario"));
+    		
+    		myU = myDao.find(id);
+    		request.setAttribute("exito", myDao.delete(myU));
+    		request.setAttribute("usuarios", myDao.list());    		
+    		url ="/WEB-INF/Usuario/consultarTodos.jsp";
+    		
+    	}else {
+    		
+    		url ="index.html";
+    		
+    	}
+    	request.getRequestDispatcher(url).forward(request, response);	
     }
 
 	/**
@@ -32,7 +94,7 @@ public class UsuarioServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		procesar(request,response);
 	}
 
 	/**
@@ -40,7 +102,7 @@ public class UsuarioServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		procesar(request, response);
 	}
 
 }
