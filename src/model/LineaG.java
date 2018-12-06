@@ -30,6 +30,22 @@ public class LineaG implements Serializable {
 
 	public LineaG() {
 	}
+	
+	public LineaG(int idLineaG, String nombre, String observacion, TipoAve tipoAveBean) {
+		super();
+		this.idLineaG = idLineaG;
+		this.nombre = nombre;
+		this.observacion = observacion;
+		this.tipoAveBean = tipoAveBean;
+	}
+
+	public LineaG(String nombre, String observacion, TipoAve tipoAveBean) {
+		super();
+		this.nombre = nombre;
+		this.observacion = observacion;
+		this.tipoAveBean = tipoAveBean;
+	}
+
 
 	public int getIdLineaG() {
 		return this.idLineaG;

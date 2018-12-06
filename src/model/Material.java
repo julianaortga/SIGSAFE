@@ -33,6 +33,23 @@ public class Material implements Serializable {
 	public Material() {
 	}
 
+	
+	public Material(int idMaterial, String descripcion, Date fechaIngreso, Galpon galpon) {
+		super();
+		this.idMaterial = idMaterial;
+		this.descripcion = descripcion;
+		this.fechaIngreso = fechaIngreso;
+		this.galpon = galpon;
+	}
+
+	public Material(String descripcion, Date fechaIngreso, Galpon galpon) {
+		super();
+		this.descripcion = descripcion;
+		this.fechaIngreso = fechaIngreso;
+		this.galpon = galpon;
+	}
+
+
 	public int getIdMaterial() {
 		return this.idMaterial;
 	}

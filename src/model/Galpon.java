@@ -51,6 +51,37 @@ public class Galpon implements Serializable {
 	public Galpon() {
 	}
 
+	
+	public Galpon(int idGalpon, BigDecimal altura, BigDecimal anchura, String estado, String obsInicial,
+			String tipoGalpon, int topeMax, List<Ave> aves, Lote loteBean, List<Material> materials) {
+		super();
+		this.idGalpon = idGalpon;
+		this.altura = altura;
+		this.anchura = anchura;
+		this.estado = estado;
+		this.obsInicial = obsInicial;
+		this.tipoGalpon = tipoGalpon;
+		this.topeMax = topeMax;
+		this.aves = aves;
+		this.loteBean = loteBean;
+		this.materials = materials;
+	}
+
+	public Galpon(BigDecimal altura, BigDecimal anchura, String estado, String obsInicial, String tipoGalpon,
+			int topeMax, List<Ave> aves, Lote loteBean, List<Material> materials) {
+		super();
+		this.altura = altura;
+		this.anchura = anchura;
+		this.estado = estado;
+		this.obsInicial = obsInicial;
+		this.tipoGalpon = tipoGalpon;
+		this.topeMax = topeMax;
+		this.aves = aves;
+		this.loteBean = loteBean;
+		this.materials = materials;
+	}
+
+
 	public int getIdGalpon() {
 		return this.idGalpon;
 	}

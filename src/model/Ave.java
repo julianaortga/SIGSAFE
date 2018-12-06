@@ -49,6 +49,39 @@ public class Ave implements Serializable {
 
 	public Ave() {
 	}
+	
+	
+
+	public Ave(int idAve, int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, BigDecimal peso,
+			String sexaje, Galpon galponBean, Raza razaBean) {
+		super();
+		this.idAve = idAve;
+		this.edad = edad;
+		this.fechaBaja = fechaBaja;
+		this.fechaIngreso = fechaIngreso;
+		this.obsInicial = obsInicial;
+		this.peso = peso;
+		this.sexaje = sexaje;
+		this.galponBean = galponBean;
+		this.razaBean = razaBean;
+	}
+
+
+
+	public Ave(int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, BigDecimal peso, String sexaje,
+			Galpon galponBean, Raza razaBean) {
+		super();
+		this.edad = edad;
+		this.fechaBaja = fechaBaja;
+		this.fechaIngreso = fechaIngreso;
+		this.obsInicial = obsInicial;
+		this.peso = peso;
+		this.sexaje = sexaje;
+		this.galponBean = galponBean;
+		this.razaBean = razaBean;
+	}
+
+
 
 	public int getIdAve() {
 		return this.idAve;

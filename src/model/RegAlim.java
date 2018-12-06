@@ -38,6 +38,26 @@ public class RegAlim implements Serializable {
 
 	public RegAlim() {
 	}
+	
+	public RegAlim(int idRegAlim, int cantidad, Date fecha, String observacion, DetallePlanA detallePlanABean,
+			Lote loteBean) {
+		super();
+		this.idRegAlim = idRegAlim;
+		this.cantidad = cantidad;
+		this.fecha = fecha;
+		this.observacion = observacion;
+		this.detallePlanABean = detallePlanABean;
+		this.loteBean = loteBean;
+	}
+
+	public RegAlim(int cantidad, Date fecha, String observacion, DetallePlanA detallePlanABean, Lote loteBean) {
+		super();
+		this.cantidad = cantidad;
+		this.fecha = fecha;
+		this.observacion = observacion;
+		this.detallePlanABean = detallePlanABean;
+		this.loteBean = loteBean;
+	}
 
 	public int getIdRegAlim() {
 		return this.idRegAlim;

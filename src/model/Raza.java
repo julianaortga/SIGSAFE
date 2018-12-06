@@ -32,6 +32,26 @@ public class Raza implements Serializable {
 
 	public Raza() {
 	}
+	
+	
+
+	public Raza(int idRaza, String nombre, List<Ave> aves, TipoAve tipoAveBean) {
+		super();
+		this.idRaza = idRaza;
+		this.nombre = nombre;
+		this.aves = aves;
+		this.tipoAveBean = tipoAveBean;
+	}
+	
+	
+	public Raza(String nombre, List<Ave> aves, TipoAve tipoAveBean) {
+		super();
+		this.nombre = nombre;
+		this.aves = aves;
+		this.tipoAveBean = tipoAveBean;
+	}
+
+
 
 	public int getIdRaza() {
 		return this.idRaza;

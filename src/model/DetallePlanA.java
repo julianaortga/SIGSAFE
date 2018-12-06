@@ -39,6 +39,33 @@ public class DetallePlanA implements Serializable {
 
 	public DetallePlanA() {
 	}
+	
+	
+
+	public DetallePlanA(int idDetalleP, int cantidad, String dia, Alimento alimentoBean, EtapaProducc etapaProducc,
+			List<RegAlim> regAlims) {
+		super();
+		this.idDetalleP = idDetalleP;
+		this.cantidad = cantidad;
+		this.dia = dia;
+		this.alimentoBean = alimentoBean;
+		this.etapaProducc = etapaProducc;
+		this.regAlims = regAlims;
+	}
+
+
+
+	public DetallePlanA(int cantidad, String dia, Alimento alimentoBean, EtapaProducc etapaProducc,
+			List<RegAlim> regAlims) {
+		super();
+		this.cantidad = cantidad;
+		this.dia = dia;
+		this.alimentoBean = alimentoBean;
+		this.etapaProducc = etapaProducc;
+		this.regAlims = regAlims;
+	}
+
+
 
 	public int getIdDetalleP() {
 		return this.idDetalleP;

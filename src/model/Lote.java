@@ -35,6 +35,26 @@ public class Lote implements Serializable {
 	public Lote() {
 	}
 
+	
+	public Lote(int idLote, String obsInicial, String ubicacion, List<Galpon> galpons, List<RegAlim> regAlims) {
+		super();
+		this.idLote = idLote;
+		this.obsInicial = obsInicial;
+		this.ubicacion = ubicacion;
+		this.galpons = galpons;
+		this.regAlims = regAlims;
+	}
+
+
+	public Lote(String obsInicial, String ubicacion, List<Galpon> galpons, List<RegAlim> regAlims) {
+		super();
+		this.obsInicial = obsInicial;
+		this.ubicacion = ubicacion;
+		this.galpons = galpons;
+		this.regAlims = regAlims;
+	}
+
+
 	public int getIdLote() {
 		return this.idLote;
 	}
