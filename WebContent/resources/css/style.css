@@ -1,6 +1,30 @@
 svg {
   touch-action: none
 }
+  
+#logo-index{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}  
+
+#texto-navbar{
+	color: #313435;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	margin-left: 20px;
+}
+
+#pajarito{
+	height: 13%;
+	width: 	13%;
+}	
+#img-finca{
+	width: 96%;
+	max-width: 1186.38px;
+	margin: 0 0px;
+}
+
 
 @font-face {
   font-family: "themify";
