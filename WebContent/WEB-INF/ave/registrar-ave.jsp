@@ -94,10 +94,84 @@
           </ul>
         </div>
       </div>
-      <main class="main-content bgc-white-100">
+      <main class="main-content bgc-grey-100">
         <div id="mainContent">
-             <h2 align="center">Finca Experimental San Pablo - UFPS</h2>
-        	<img id="img-finca" alt="" src="resources/img/finca.jpg">
+          <div class="row text-center justify-content-md-center">
+            <div class="col-12">
+              <h2>Finca Experimental San Pablo - UFPS</h2>
+              <h3>Registrar ave</h3>
+              <hr>
+            </div>
+            <div class="col-md-10 col-sm-12 bd bgc-white p-20 text-left mT-40">
+              <form>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="fechaIngreso">Fecha de ingreso</label>
+                    <input autofocus type="date" class="form-control" id="fechaIngreso" placeholder="Fecha de ingreso" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="fechaBaja">Fecha de baja</label>
+                    <input type="date" class="form-control" id="fechaBaja" placeholder="Fecha de baja" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="obsInicial">Observación inicial</label>
+                  <textarea class="form-control" id="obsInicial" placeholder="Ingresa la observación inicial"></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="peso">Peso (en gramos)</label>
+                    <input type="number" class="form-control" id="peso" placeholder="Peso en gramos" required>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="edad">Edad (en meses)</label>
+                    <input type="number" class="form-control" id="edad" placeholder="Edad en meses" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <label for="raza">Raza</label>
+                    <select id="raza" class="form-control">
+                      <option selected="selected">Seleccionar...</option>
+                      <option value="">AÑADIR OPCIONES</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="galpon">Galpón</label>
+                    <select id="galpon" class="form-control">
+                      <option selected="selected">Seleccionar...</option>
+                      <option value="">AÑADIR OPCIONES</option>
+                    </select>
+                  </div>
+                </div>
+                <fieldset class="form-group">
+                    <div class="row">
+                      <div class="col-sm-2">
+                        <p>Sexaje</p>
+                      </div>
+                      <div class="col-sm-10">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="sexaje" id="sexajeM" value="M" checked="checked"> 
+                            Masculino
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                          <input class="form-check-input" type="radio" name="sexaje" id="sexajeF" value="F">
+                            Femenino
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                
+                <button type="submit" class="btn btn-danger">Guardar</button>
+                <a type="button" class="btn btn-light">Volver</a>
+              </form>
+            </div>
+          </div>
         </div>
       </main>
       

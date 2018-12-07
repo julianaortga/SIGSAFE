@@ -28,7 +28,7 @@ public class Conexion<T> {
 	
 	public static EntityManager getEm(){
 		if ( em == null ) {
-			EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAproyecto");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("SIGSAFE");
             em = emf.createEntityManager();
         }
 		return em;

@@ -15,7 +15,7 @@ public class LineaG implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_linea_g")
 	private int idLineaG;
 
@@ -45,6 +45,7 @@ public class LineaG implements Serializable {
 		this.observacion = observacion;
 		this.tipoAveBean = tipoAveBean;
 	}
+
 
 	public int getIdLineaG() {
 		return this.idLineaG;

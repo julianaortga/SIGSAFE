@@ -4,30 +4,29 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the tipo_ave database table.
  * 
  */
 @Entity
-@Table(name="tipo_ave")
-@NamedQuery(name="TipoAve.findAll", query="SELECT t FROM TipoAve t")
+@Table(name = "tipo_ave")
+@NamedQuery(name = "TipoAve.findAll", query = "SELECT t FROM TipoAve t")
 public class TipoAve implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id_tipo_ave")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_tipo_ave")
 	private int idTipoAve;
 
 	private String nombre;
 
-	//bi-directional many-to-one association to LineaG
-	@OneToMany(mappedBy="tipoAveBean")
+	// bi-directional many-to-one association to LineaG
+	@OneToMany(mappedBy = "tipoAveBean")
 	private List<LineaG> lineaGs;
 
-	//bi-directional many-to-one association to Raza
-	@OneToMany(mappedBy="tipoAveBean")
+	// bi-directional many-to-one association to Raza
+	@OneToMany(mappedBy = "tipoAveBean")
 	private List<Raza> razas;
 
 	public TipoAve() {
@@ -46,6 +45,17 @@ public class TipoAve implements Serializable {
 		this.nombre = nombre;
 		this.lineaGs = lineaGs;
 		this.razas = razas;
+	}
+
+	public TipoAve(int id, String nombre) {
+		super();
+		this.idTipoAve = id;
+		this.nombre = nombre;
+	}
+
+	public TipoAve(String nombre) {
+		super();
+		this.nombre = nombre;
 	}
 
 	public int getIdTipoAve() {

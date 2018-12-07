@@ -94,10 +94,56 @@
           </ul>
         </div>
       </div>
-      <main class="main-content bgc-white-100">
+      <main class="main-content bgc-grey-100">
         <div id="mainContent">
-             <h2 align="center">Finca Experimental San Pablo - UFPS</h2>
-        	<img id="img-finca" alt="" src="resources/img/finca.jpg">
+          <div class="row text-center">
+            <div class="col-12">
+              <h2>Finca Experimental San Pablo - UFPS</h2>
+              <h3>Módulo de aves</h3>
+              <hr>
+            </div>
+            <div class="space"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="layers bd bgc-white">
+                <img src="resources/img/ave1.jpg" alt="" class="img-fluid">
+                <div class="overlay-card">
+                  <a href="ave?seleccion=2" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Registrar</a>
+                  <a href="ave?seleccion=10" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Consultar</a>
+                  <h3>Tipo de ave</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="layers bd bgc-white">
+                <img src="resources/img/ave2.jpg" alt="" class="img-fluid">
+                <div class="overlay-card">
+                    <a href="ave?seleccion=4" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Registrar</a>
+                    <a href="ave?seleccion=11" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Consultar</a>
+                  <h3>Raza</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="layers bd bgc-white">
+                <img src="resources/img/ave3.jpg" alt="" class="img-fluid">
+                <div class="overlay-card">
+                    <a href="ave?seleccion=3" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Registrar</a>
+                    <a href="ave?seleccion=12" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Consultar</a>
+                  <h3>Linea genética</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="layers bd bgc-white">
+                <img src="resources/img/ave4.jpg" alt="" class="img-fluid">
+                <div class="overlay-card">
+                    <a href="ave?seleccion=5" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Registrar</a>
+                    <a href="ave?seleccion=13" class="btn cur-p btn-outline-danger bdrs-10em" type="button">Consultar</a>
+                  <h3>Ave</h3>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
       

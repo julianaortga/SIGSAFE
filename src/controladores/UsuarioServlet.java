@@ -16,10 +16,7 @@ import model.Usuario;
 @WebServlet("/UsuarioServlet")
 public class UsuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private Usuario myUsuario = null;
-	
-       
+	   
     /**
      * @see HttpServlet#HttpServlet()
      */

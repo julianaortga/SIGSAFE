@@ -15,7 +15,7 @@ public class Raza implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_raza")
 	private int idRaza;
 
@@ -45,6 +45,20 @@ public class Raza implements Serializable {
 		super();
 		this.nombre = nombre;
 		this.aves = aves;
+		this.tipoAveBean = tipoAveBean;
+	}
+	
+
+	public Raza(String nombre, TipoAve tipoAveBean) {
+		super();
+		this.nombre = nombre;
+		this.tipoAveBean = tipoAveBean;
+	}
+	
+	public Raza(int id,String nombre, TipoAve tipoAveBean) {
+		super();
+		this.idRaza=id;
+		this.nombre = nombre;
 		this.tipoAveBean = tipoAveBean;
 	}
 
