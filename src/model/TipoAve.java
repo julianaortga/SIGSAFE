@@ -32,7 +32,7 @@ public class TipoAve implements Serializable {
 
 	public TipoAve() {
 	}
-	
+
 	public TipoAve(int idTipoAve, String nombre, List<LineaG> lineaGs, List<Raza> razas) {
 		super();
 		this.idTipoAve = idTipoAve;

@@ -33,7 +33,6 @@ public class Material implements Serializable {
 	public Material() {
 	}
 
-	
 	public Material(int idMaterial, String descripcion, Date fechaIngreso, Galpon galpon) {
 		super();
 		this.idMaterial = idMaterial;
@@ -48,7 +47,6 @@ public class Material implements Serializable {
 		this.fechaIngreso = fechaIngreso;
 		this.galpon = galpon;
 	}
-
 
 	public int getIdMaterial() {
 		return this.idMaterial;

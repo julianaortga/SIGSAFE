@@ -29,8 +29,6 @@ public class Alimento implements Serializable {
 
 	public Alimento() {
 	}
-	
-	
 
 	public Alimento(int idAlimento, String nombre, String tipo, List<DetallePlanA> detallePlanAs) {
 		super();
@@ -40,16 +38,12 @@ public class Alimento implements Serializable {
 		this.detallePlanAs = detallePlanAs;
 	}
 
-
-
 	public Alimento(String nombre, String tipo, List<DetallePlanA> detallePlanAs) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.detallePlanAs = detallePlanAs;
 	}
-
-
 
 	public int getIdAlimento() {
 		return this.idAlimento;

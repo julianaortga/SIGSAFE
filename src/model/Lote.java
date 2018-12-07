@@ -35,7 +35,6 @@ public class Lote implements Serializable {
 	public Lote() {
 	}
 
-	
 	public Lote(int idLote, String obsInicial, String ubicacion, List<Galpon> galpons, List<RegAlim> regAlims) {
 		super();
 		this.idLote = idLote;
@@ -45,7 +44,6 @@ public class Lote implements Serializable {
 		this.regAlims = regAlims;
 	}
 
-
 	public Lote(String obsInicial, String ubicacion, List<Galpon> galpons, List<RegAlim> regAlims) {
 		super();
 		this.obsInicial = obsInicial;
@@ -53,7 +51,6 @@ public class Lote implements Serializable {
 		this.galpons = galpons;
 		this.regAlims = regAlims;
 	}
-
 
 	public int getIdLote() {
 		return this.idLote;

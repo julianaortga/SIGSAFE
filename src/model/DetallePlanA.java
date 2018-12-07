@@ -39,8 +39,6 @@ public class DetallePlanA implements Serializable {
 
 	public DetallePlanA() {
 	}
-	
-	
 
 	public DetallePlanA(int idDetalleP, int cantidad, String dia, Alimento alimentoBean, EtapaProducc etapaProducc,
 			List<RegAlim> regAlims) {
@@ -53,8 +51,6 @@ public class DetallePlanA implements Serializable {
 		this.regAlims = regAlims;
 	}
 
-
-
 	public DetallePlanA(int cantidad, String dia, Alimento alimentoBean, EtapaProducc etapaProducc,
 			List<RegAlim> regAlims) {
 		super();
@@ -64,8 +60,6 @@ public class DetallePlanA implements Serializable {
 		this.etapaProducc = etapaProducc;
 		this.regAlims = regAlims;
 	}
-
-
 
 	public int getIdDetalleP() {
 		return this.idDetalleP;

@@ -24,29 +24,31 @@ public class Usuario implements Serializable {
 
 	private String nombre;
 
+	private int rol;
+
 	private String username;
 
 	public Usuario() {
 	}
-	
-	public Usuario(int idUsuario, String contrasena, String correo, String nombre, String username) {
+
+	public Usuario(int idUsuario, String contrasena, String correo, String nombre, int rol, String username) {
 		super();
 		this.idUsuario = idUsuario;
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.nombre = nombre;
+		this.rol = rol;
 		this.username = username;
 	}
-	
-	public Usuario(String contrasena, String correo, String nombre, String username) {
+
+	public Usuario(String contrasena, String correo, String nombre, int rol, String username) {
 		super();
 		this.contrasena = contrasena;
 		this.correo = correo;
 		this.nombre = nombre;
+		this.rol = rol;
 		this.username = username;
 	}
-	
-
 
 	public int getIdUsuario() {
 		return this.idUsuario;
@@ -78,6 +80,14 @@ public class Usuario implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public int getRol() {
+		return this.rol;
+	}
+
+	public void setRol(int rol) {
+		this.rol = rol;
 	}
 
 	public String getUsername() {

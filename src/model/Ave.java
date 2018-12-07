@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 
 
@@ -33,27 +32,25 @@ public class Ave implements Serializable {
 	@Column(name="obs_inicial")
 	private String obsInicial;
 
-	private BigDecimal peso;
+	private float peso;
 
 	private String sexaje;
-
-	//bi-directional many-to-one association to Galpon
-	@ManyToOne
-	@JoinColumn(name="galpon")
-	private Galpon galponBean;
 
 	//bi-directional many-to-one association to Raza
 	@ManyToOne
 	@JoinColumn(name="raza")
 	private Raza razaBean;
 
+	//bi-directional many-to-one association to Galpon
+	@ManyToOne
+	@JoinColumn(name="galpon")
+	private Galpon galponBean;
+
 	public Ave() {
 	}
-	
-	
 
-	public Ave(int idAve, int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, BigDecimal peso,
-			String sexaje, Galpon galponBean, Raza razaBean) {
+	public Ave(int idAve, int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje,
+			Raza razaBean, Galpon galponBean) {
 		super();
 		this.idAve = idAve;
 		this.edad = edad;
@@ -62,14 +59,12 @@ public class Ave implements Serializable {
 		this.obsInicial = obsInicial;
 		this.peso = peso;
 		this.sexaje = sexaje;
-		this.galponBean = galponBean;
 		this.razaBean = razaBean;
+		this.galponBean = galponBean;
 	}
 
-
-
-	public Ave(int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, BigDecimal peso, String sexaje,
-			Galpon galponBean, Raza razaBean) {
+	public Ave(int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje, Raza razaBean,
+			Galpon galponBean) {
 		super();
 		this.edad = edad;
 		this.fechaBaja = fechaBaja;
@@ -77,11 +72,9 @@ public class Ave implements Serializable {
 		this.obsInicial = obsInicial;
 		this.peso = peso;
 		this.sexaje = sexaje;
-		this.galponBean = galponBean;
 		this.razaBean = razaBean;
+		this.galponBean = galponBean;
 	}
-
-
 
 	public int getIdAve() {
 		return this.idAve;
@@ -123,11 +116,11 @@ public class Ave implements Serializable {
 		this.obsInicial = obsInicial;
 	}
 
-	public BigDecimal getPeso() {
+	public float getPeso() {
 		return this.peso;
 	}
 
-	public void setPeso(BigDecimal peso) {
+	public void setPeso(float peso) {
 		this.peso = peso;
 	}
 
@@ -139,20 +132,20 @@ public class Ave implements Serializable {
 		this.sexaje = sexaje;
 	}
 
-	public Galpon getGalponBean() {
-		return this.galponBean;
-	}
-
-	public void setGalponBean(Galpon galponBean) {
-		this.galponBean = galponBean;
-	}
-
 	public Raza getRazaBean() {
 		return this.razaBean;
 	}
 
 	public void setRazaBean(Raza razaBean) {
 		this.razaBean = razaBean;
+	}
+
+	public Galpon getGalponBean() {
+		return this.galponBean;
+	}
+
+	public void setGalponBean(Galpon galponBean) {
+		this.galponBean = galponBean;
 	}
 
 }

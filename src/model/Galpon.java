@@ -2,7 +2,6 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -16,13 +15,13 @@ public class Galpon implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="id_galpon")
 	private int idGalpon;
 
-	private BigDecimal altura;
+	private float altura;
 
-	private BigDecimal anchura;
+	private float anchura;
 
 	private String estado;
 
@@ -51,9 +50,8 @@ public class Galpon implements Serializable {
 	public Galpon() {
 	}
 
-	
-	public Galpon(int idGalpon, BigDecimal altura, BigDecimal anchura, String estado, String obsInicial,
-			String tipoGalpon, int topeMax, List<Ave> aves, Lote loteBean, List<Material> materials) {
+	public Galpon(int idGalpon, float altura, float anchura, String estado, String obsInicial, String tipoGalpon,
+			int topeMax, List<Ave> aves, Lote loteBean, List<Material> materials) {
 		super();
 		this.idGalpon = idGalpon;
 		this.altura = altura;
@@ -67,8 +65,8 @@ public class Galpon implements Serializable {
 		this.materials = materials;
 	}
 
-	public Galpon(BigDecimal altura, BigDecimal anchura, String estado, String obsInicial, String tipoGalpon,
-			int topeMax, List<Ave> aves, Lote loteBean, List<Material> materials) {
+	public Galpon(float altura, float anchura, String estado, String obsInicial, String tipoGalpon, int topeMax,
+			List<Ave> aves, Lote loteBean, List<Material> materials) {
 		super();
 		this.altura = altura;
 		this.anchura = anchura;
@@ -80,7 +78,6 @@ public class Galpon implements Serializable {
 		this.loteBean = loteBean;
 		this.materials = materials;
 	}
-
 
 	public int getIdGalpon() {
 		return this.idGalpon;
@@ -90,19 +87,19 @@ public class Galpon implements Serializable {
 		this.idGalpon = idGalpon;
 	}
 
-	public BigDecimal getAltura() {
+	public float getAltura() {
 		return this.altura;
 	}
 
-	public void setAltura(BigDecimal altura) {
+	public void setAltura(float altura) {
 		this.altura = altura;
 	}
 
-	public BigDecimal getAnchura() {
+	public float getAnchura() {
 		return this.anchura;
 	}
 
-	public void setAnchura(BigDecimal anchura) {
+	public void setAnchura(float anchura) {
 		this.anchura = anchura;
 	}
 

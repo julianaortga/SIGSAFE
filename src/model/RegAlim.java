@@ -26,37 +26,37 @@ public class RegAlim implements Serializable {
 
 	private String observacion;
 
-	//bi-directional many-to-one association to DetallePlanA
-	@ManyToOne
-	@JoinColumn(name="detalle_plan_a")
-	private DetallePlanA detallePlanABean;
-
 	//bi-directional many-to-one association to Lote
 	@ManyToOne
 	@JoinColumn(name="lote")
 	private Lote loteBean;
 
+	//bi-directional many-to-one association to DetallePlanA
+	@ManyToOne
+	@JoinColumn(name="detalle_plan_a")
+	private DetallePlanA detallePlanABean;
+
 	public RegAlim() {
 	}
-	
-	public RegAlim(int idRegAlim, int cantidad, Date fecha, String observacion, DetallePlanA detallePlanABean,
-			Lote loteBean) {
+
+	public RegAlim(int idRegAlim, int cantidad, Date fecha, String observacion, Lote loteBean,
+			DetallePlanA detallePlanABean) {
 		super();
 		this.idRegAlim = idRegAlim;
 		this.cantidad = cantidad;
 		this.fecha = fecha;
 		this.observacion = observacion;
-		this.detallePlanABean = detallePlanABean;
 		this.loteBean = loteBean;
+		this.detallePlanABean = detallePlanABean;
 	}
 
-	public RegAlim(int cantidad, Date fecha, String observacion, DetallePlanA detallePlanABean, Lote loteBean) {
+	public RegAlim(int cantidad, Date fecha, String observacion, Lote loteBean, DetallePlanA detallePlanABean) {
 		super();
 		this.cantidad = cantidad;
 		this.fecha = fecha;
 		this.observacion = observacion;
-		this.detallePlanABean = detallePlanABean;
 		this.loteBean = loteBean;
+		this.detallePlanABean = detallePlanABean;
 	}
 
 	public int getIdRegAlim() {
@@ -91,20 +91,20 @@ public class RegAlim implements Serializable {
 		this.observacion = observacion;
 	}
 
-	public DetallePlanA getDetallePlanABean() {
-		return this.detallePlanABean;
-	}
-
-	public void setDetallePlanABean(DetallePlanA detallePlanABean) {
-		this.detallePlanABean = detallePlanABean;
-	}
-
 	public Lote getLoteBean() {
 		return this.loteBean;
 	}
 
 	public void setLoteBean(Lote loteBean) {
 		this.loteBean = loteBean;
+	}
+
+	public DetallePlanA getDetallePlanABean() {
+		return this.detallePlanABean;
+	}
+
+	public void setDetallePlanABean(DetallePlanA detallePlanABean) {
+		this.detallePlanABean = detallePlanABean;
 	}
 
 }

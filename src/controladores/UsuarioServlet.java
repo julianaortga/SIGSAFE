@@ -54,9 +54,10 @@ public class UsuarioServlet extends HttpServlet {
     		String contrasena = request.getParameter("contrasena");
     		String correo = request.getParameter("correo");
     		String nombre = request.getParameter("nombre");
+    		int rol = Integer.parseInt(request.getParameter("rol"));
     		String username = request.getParameter("username");
     		
-    		myU = new Usuario(contrasena, correo, nombre, username);
+    		myU = new Usuario(contrasena, correo, nombre, rol, username);
     		request.setAttribute("req",myDao.insert(myU));
     		url ="/WEB-INF/Usuario/consultarTodos.jsp";
     		
@@ -66,9 +67,10 @@ public class UsuarioServlet extends HttpServlet {
     		String contrasena = request.getParameter("contrasena");
     		String correo = request.getParameter("correo");
     		String nombre = request.getParameter("nombre");
+    		int rol = Integer.parseInt(request.getParameter("rol"));
     		String username = request.getParameter("username");
     		
-    		myU = new Usuario(id,contrasena, correo, nombre, username);
+    		myU = new Usuario(id,contrasena, correo, nombre,rol, username);
     		request.setAttribute("req", myDao.update(myU));
     		url ="/WEB-INF/Usuario/consultarTodos.jsp";
     		

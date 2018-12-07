@@ -25,6 +25,13 @@ svg {
 	margin: 0 0px;
 }
 
+.sidebar-menu li a {
+    color: #313438;
+}
+
+.sidebar-menu {
+    background-color: #f1f2f3 !important;
+}
 
 @font-face {
   font-family: "themify";

@@ -33,7 +33,6 @@ public class EtapaProducc implements Serializable {
 	public EtapaProducc() {
 	}
 
-	
 	public EtapaProducc(int idEProducc, String descripcion, int duracion, String nombre,
 			List<DetallePlanA> detallePlanAs) {
 		super();
@@ -43,8 +42,6 @@ public class EtapaProducc implements Serializable {
 		this.nombre = nombre;
 		this.detallePlanAs = detallePlanAs;
 	}
-	
-
 
 	public EtapaProducc(String descripcion, int duracion, String nombre, List<DetallePlanA> detallePlanAs) {
 		super();
@@ -53,7 +50,6 @@ public class EtapaProducc implements Serializable {
 		this.nombre = nombre;
 		this.detallePlanAs = detallePlanAs;
 	}
-
 
 	public int getIdEProducc() {
 		return this.idEProducc;

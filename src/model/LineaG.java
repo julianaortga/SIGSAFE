@@ -30,7 +30,7 @@ public class LineaG implements Serializable {
 
 	public LineaG() {
 	}
-	
+
 	public LineaG(int idLineaG, String nombre, String observacion, TipoAve tipoAveBean) {
 		super();
 		this.idLineaG = idLineaG;
@@ -45,7 +45,6 @@ public class LineaG implements Serializable {
 		this.observacion = observacion;
 		this.tipoAveBean = tipoAveBean;
 	}
-
 
 	public int getIdLineaG() {
 		return this.idLineaG;
