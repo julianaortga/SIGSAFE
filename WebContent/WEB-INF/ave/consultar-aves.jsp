@@ -148,16 +148,23 @@
 							<thead>
 								<tr>
 									<th>Id</th>
+									<th>Fecha Ingreso</th>
+									<th>Fecha Baja</th>
 									<th>Edad</th>
 									<th>Sexaje</th>
+									<th>Observacion</th>
+									<th>Galón</th>
 									<th width="30%">Acción</th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
 									<th>Id</th>
+									<th>Fecha Ingreso</th>
+									<th>Fecha Baja</th>
 									<th>Edad</th>
 									<th>Sexaje</th>
+									<th>Observación</th>
 									<th>Galpón<th>
 									<th>Acción</th>
 								</tr>
@@ -169,10 +176,13 @@
 								%>
 								<tr>
 									<th><%=a.getIdAve()%></th>
+									<th><%=a.getFechaIngreso()%></th>
+									<th><%=a.getFechaBaja() %></th>
 									<th><%=a.getEdad()%></th>
 									<th><%=a.getSexaje()%></th>
+									<th><%=a.getObsInicial() %></th>
 									<th><%=a.getGalponBean().getIdGalpon() %>
-									<th><a href="ave?seleccion=4&id=<%=a.getIdAve()%>"
+									<th><a href="ave?seleccion=17&id=<%=a.getIdAve()%>"
 										class="btn bdrs-10p btn-outline-danger">Modificar</a> <a
 										href="" class="btn bdrs-10p btn-danger">Eliminar</a></th>
 								</tr>

@@ -34,8 +34,8 @@ public class AveServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String url = "";
 		String nombre;
-		int id=0, tipo=0;
-		SimpleDateFormat simpleFecha = new SimpleDateFormat("dd/MM/yyyy");
+		int id = 0, tipo = 0;
+		SimpleDateFormat simpleFecha = new SimpleDateFormat("yyyy-mm-dd");
 		TipoAveDao myTipoAveDao = new TipoAveDao();
 		TipoAve myTipoAve;
 		RazaDao myRazaDao = new RazaDao();
@@ -67,6 +67,12 @@ public class AveServlet extends HttpServlet {
 			url = "/WEB-INF/ave/registrar-raza.jsp";
 			break;
 		case 5: // Redireccionar al formulario de ave
+			List<Galpon> g = myGalponDao.list();
+			List<Raza> r = myRazaDao.list();
+
+			request.setAttribute("g", g);
+			request.setAttribute("r", r);
+
 			url = "/WEB-INF/ave/registrar-ave.jsp";
 			break;
 		case 6: // Registrar tipo ave
@@ -101,7 +107,6 @@ public class AveServlet extends HttpServlet {
 			break;
 		case 9: // Registrar ave
 
-			nombre = request.getParameter("nombre");
 			int edad = Integer.parseInt(request.getParameter("edad"));
 			String obsInicial = request.getParameter("obsInicial");
 			float peso = Float.parseFloat(request.getParameter("peso"));
@@ -120,8 +125,10 @@ public class AveServlet extends HttpServlet {
 				Galpon gal = myGalponDao.find(galpon);
 
 				myAve = new Ave(edad, fechaBaj, fechaIng, obsInicial, peso, sexaje, raz, gal);
-
+				
 				request.setAttribute("req", myAveDao.insert(myAve));
+				request.setAttribute("combo", myAveDao.list());
+				System.out.println("HOLAMUNDO");
 				url = "/WEB-INF/ave/consultar-aves.jsp";
 			} catch (ParseException e) {
 
@@ -144,7 +151,7 @@ public class AveServlet extends HttpServlet {
 			request.setAttribute("combo", myAveDao.list());
 			url = "/WEB-INF/ave/consultar-aves.jsp";
 			break;
-		case 14: //Redireccionar al actualizar el tipo del ave
+		case 14: // Redireccionar al actualizar el tipo del ave
 			try {
 				int i = Integer.parseInt(request.getParameter("id"));
 				request.setAttribute("objeto", myTipoAveDao.find(i));
@@ -154,7 +161,7 @@ public class AveServlet extends HttpServlet {
 				url = "/WEB-INF/ave/modulo-ave.jsp";
 			}
 			break;
-		case 15: //Redireccionar al actualizar la raza
+		case 15: // Redireccionar al actualizar la raza
 			try {
 				request.setAttribute("combo", myTipoAveDao.list());
 				int i = Integer.parseInt(request.getParameter("id"));
@@ -165,7 +172,7 @@ public class AveServlet extends HttpServlet {
 				url = "/WEB-INF/ave/modulo-ave.jsp";
 			}
 			break;
-		case 16: //Redireccionar al actualizar la linea genetica
+		case 16: // Redireccionar al actualizar la linea genetica
 			try {
 				request.setAttribute("combo", myTipoAveDao.list());
 				int i = Integer.parseInt(request.getParameter("id"));
@@ -176,10 +183,10 @@ public class AveServlet extends HttpServlet {
 				url = "/WEB-INF/ave/modulo-ave.jsp";
 			}
 			break;
-		case 17: //Redireccionar al actualizar el ave
+		case 17: // Redireccionar al actualizar el ave
 			try {
-				request.setAttribute("combo", myRazaDao.list());
-				request.setAttribute("combo", myGalponDao.list());
+				request.setAttribute("r", myRazaDao.list());
+				request.setAttribute("g", myGalponDao.list());
 				int i = Integer.parseInt(request.getParameter("id"));
 				request.setAttribute("objeto", myAveDao.find(i));
 				url = "/WEB-INF/ave/registrar-ave.jsp";
@@ -189,7 +196,7 @@ public class AveServlet extends HttpServlet {
 			}
 			break;
 		case 18: // Actualizar el tipo de ave
-			
+
 			myTipoAve = new TipoAve(Integer.parseInt(request.getParameter("id")),
 					request.getParameter("nombre").toString());
 			request.setAttribute("exito", myTipoAveDao.update(myTipoAve));
@@ -197,38 +204,60 @@ public class AveServlet extends HttpServlet {
 			url = "/WEB-INF/ave/consultar-tipos-ave.jsp";
 			break;
 		case 19: // Actualizar la raza
-			
-			id= Integer.parseInt(request.getParameter("id"));
+
+			id = Integer.parseInt(request.getParameter("id"));
 			nombre = request.getParameter("nombre");
 			tipo = Integer.parseInt(request.getParameter("tipoAveBean"));
 			myTipoAve = myTipoAveDao.find(tipo);
-			
-			myRaza = new Raza(id,nombre,myTipoAve);
-			
+
+			myRaza = new Raza(id, nombre, myTipoAve);
+
 			request.setAttribute("exito", myRazaDao.update(myRaza));
 			request.setAttribute("combo", myRazaDao.list());
 			url = "/WEB-INF/ave/consultar-razas.jsp";
 			break;
 		case 20: // Actualizar la linea genetica
-			
-			id= Integer.parseInt(request.getParameter("id")); 
+
+			id = Integer.parseInt(request.getParameter("id"));
 			nombre = request.getParameter("nombre");
 			observacion = request.getParameter("obsercacion");
 			tipo = Integer.parseInt(request.getParameter("tipoAveBean"));
 			myTipoAve = myTipoAveDao.find(tipo);
-			
-			myLineaG = new LineaG(id,nombre,observacion,myTipoAve);
+
+			myLineaG = new LineaG(id, nombre, observacion, myTipoAve);
 			request.setAttribute("exito", myLineaDao.update(myLineaG));
 			request.setAttribute("combo", myLineaDao.list());
 			url = "/WEB-INF/ave/consultar-tipos-ave.jsp";
 			break;
 		case 21: // Actualizar el ave
-			myTipoAve = new TipoAve(Integer.parseInt(request.getParameter("id")),
-					request.getParameter("nombre").toString());
-			request.setAttribute("exito", myTipoAveDao.update(myTipoAve));
-			request.setAttribute("combo", myTipoAveDao.list());
-			url = "/WEB-INF/ave/consultar-tipos-ave.jsp";
-			System.out.println("holamundo");
+
+			id = Integer.parseInt(request.getParameter("id"));
+			edad = Integer.parseInt(request.getParameter("edad"));
+			obsInicial = request.getParameter("obsInicial");
+			peso = Float.parseFloat(request.getParameter("peso"));
+			sexaje = request.getParameter("sexaje");
+
+			try {
+				String fechaBaja = request.getParameter("fechaBaja");
+				String fechaIngreso = request.getParameter("fechaIngreso");
+
+				Date fechaIng = simpleFecha.parse(fechaIngreso);
+				Date fechaBaj = simpleFecha.parse(fechaBaja);
+
+				int raza = Integer.parseInt(request.getParameter("raza"));
+				int galpon = Integer.parseInt(request.getParameter("galpon"));
+				Raza raz = myRazaDao.find(raza);
+				Galpon gal = myGalponDao.find(galpon);
+
+				myAve = new Ave(edad, fechaBaj, fechaIng, obsInicial, peso, sexaje, raz, gal);
+
+				request.setAttribute("exito", myAveDao.update(myAve));
+				request.setAttribute("combo", myAveDao.list());
+				url = "/WEB-INF/ave/consultar-tipos-ave.jsp";
+			} catch (ParseException e) {
+
+				e.printStackTrace();
+			}
 			break;
 		}
 

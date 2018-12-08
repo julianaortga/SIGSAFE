@@ -39,6 +39,7 @@ public class Conexion<T> {
 		return object;
 	}
 	
+	
 	public List<T> list(){
 		TypedQuery<T> consulta= em.createNamedQuery(c.getSimpleName()+".findAll", c);
 		List<T> lista = (List<T>) consulta.getResultList();
