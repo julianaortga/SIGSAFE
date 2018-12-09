@@ -37,7 +37,7 @@ public class Raza implements Serializable {
 		super();
 		this.idRaza = id;
 	}
-
+	
 	public Raza(String nombre, List<Ave> aves, TipoAve tipoAveBean) {
 		super();
 		this.nombre = nombre;

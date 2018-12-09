@@ -24,6 +24,10 @@ public class RazaServlet extends HttpServlet {
 		try {
 			String ruta = "";
 			int seleccion = Integer.parseInt(request.getParameter("seleccion"));
+
+			int id = 0;
+			String nombre = "";
+
 			switch (seleccion) {
 			case 1:
 				try { // Formulario Actualizar
@@ -40,15 +44,21 @@ public class RazaServlet extends HttpServlet {
 				ruta = "/WEB-INF/ave/consultar-razas.jsp";
 				break;
 			case 3: // Registrar
-				request.setAttribute("exito", new RazaDao().insert(new Raza(request.getParameter("nombre"),
-						new TipoAveDao().find(request.getParameter("tipoAveId")))));
+				id = Integer.parseInt(request.getParameter("tipoAveId")); 
+				nombre = request.getParameter("nombre").toString();
+				// ese atributo exito es el que te dice si se hizo o no, es un true o false,
+				// está en los registrar, en los actualizar y eliminar
+				// tienes es que llamarlos en la vista
+				request.setAttribute("exito", new RazaDao().insert(new Raza(nombre, new TipoAveDao().find(id))));
+				request.setAttribute("lista", new RazaDao().list());
 				ruta = "/WEB-INF/ave/consultar-razas.jsp";
 				break;
 			case 4: // Actualizar
+				id = Integer.parseInt(request.getParameter("id"));
+				nombre = request.getParameter("nombre");
+				int tipoAveId = Integer.parseInt(request.getParameter("tipoAveId"));
 				request.setAttribute("exito",
-						new RazaDao().update(
-								new Raza(Integer.parseInt(request.getParameter("id")), request.getParameter("nombre"),
-										new TipoAveDao().find(Integer.parseInt(request.getParameter("tipoAveId"))))));
+						new RazaDao().update(new Raza(id, nombre, new TipoAveDao().find(tipoAveId))));
 				request.setAttribute("lista", new RazaDao().list());
 				ruta = "/WEB-INF/ave/consultar-razas.jsp";
 				break;

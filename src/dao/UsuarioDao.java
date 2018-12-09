@@ -2,6 +2,7 @@ package dao;
 
 import model.Usuario;
 
+import javax.persistence.Embeddable;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -14,19 +15,22 @@ public class UsuarioDao extends Conexion<Usuario> implements GenericDao<Usuario>
 		super(Usuario.class);
 	}
 
-	public Usuario iniciarSession(String usuario, String clave) {
+	public Usuario iniciarSession(String correo, String clave) {
+		Usuario u = null;
+		EntityManager em = Conexion.getEm();
 		try {
-			EntityManager em = Conexion.getEm();
 			em.getTransaction().begin();
 			TypedQuery<Usuario> query = em.createQuery(
-					"SELECT u FROM usuario u WHERE u.correo = :usuario AND u.clave = :contrasena", Usuario.class);
-			query.setParameter("correo", usuario);
-			query.setParameter("clave", clave);
-			return query.getSingleResult();
+					"SELECT u FROM Usuario u WHERE u.correo = :correo AND u.contrasena = :contrasena", Usuario.class);
+			query.setParameter("correo", correo);
+			query.setParameter("contrasena", clave);
+			u = query.getSingleResult();
 		} catch (Exception ex) {
 			ex.printStackTrace();
+		} finally {
+			em.close(); // miremos a ver si así funciona
 		}
-		return null;
+		return u;
 	}
 
 }

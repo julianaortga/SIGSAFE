@@ -19,13 +19,22 @@ public class SeguridadServlet extends HttpServlet {
 
 	protected void procesar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("hola, entré");
+
 		String ruta = "";
 		Usuario sesion = new UsuarioDao().iniciarSession(request.getParameter("correo"),
 				request.getParameter("contrasena"));
 		if (sesion != null) {
+			
+			// mira acá, cuando el logueo es exitoso se guarda el usuario que se logueó en la sesión, eso lo puedes tomar para poner el nombre
+			
 			request.getSession().setAttribute("sesion", sesion);
 			ruta = "index?seleccion=1";
 		} else {
+			
+			// acá cuando no se loguea podemos colocar un atributo para cuando no entra
+			
+			request.setAttribute("sesion", false);
 			ruta = "login.jsp";
 		}
 		request.getRequestDispatcher(ruta).forward(request, response);
@@ -54,8 +63,7 @@ public class SeguridadServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
+		procesar(request, response);
 	}
 
 }

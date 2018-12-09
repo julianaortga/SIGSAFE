@@ -42,9 +42,34 @@
 
 100%{
 -webkit-transform
+
+
+
+
+
+
 :scale(1)
-;opacity
+
+
+
+
+
+
+;
+opacity
+
+
+
+
+
+
 :
+
+
+
+
+
+
 0
 }
 }
@@ -55,11 +80,49 @@ keyframes sk-scaleout { 0%{
 }
 100%{
 -webkit-transform
+
+
+
+
+
+
 :scale(1)
-;transform
+
+
+
+
+
+
+;
+transform
+
+
+
+
+
+
 :scale(1)
-;opacity
+
+
+
+
+
+
+;
+opacity
+
+
+
+
+
+
 :
+
+
+
+
+
+
 0
 }
 }
@@ -127,6 +190,24 @@ keyframes sk-scaleout { 0%{
 					</div>
 				</div>
 			</form>
+			<%
+				try {
+					// justo así, pero no sesion, sino exito
+					// si me entendiste? lo del alert no te lo hago porque para el front malo sí sooy :c vale amorchis tranquil
+					boolean sesion = Boolean.parseBoolean(request.getAttribute("sesion").toString());
+					if (!sesion) {
+			%>
+
+			<!-- Acá poner un script para un alert que diga lo de abajo vale, asi mismo lo hago cuando registro, modifico y elimino? sí amor pero te voy a mostrar algo, las variables de confirmación ya se están enviando -->
+
+			oops perrito, hubo un error, pongase pispiro
+
+			<%
+				}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			%>
 		</div>
 	</div>
 	<script type="text/javascript" src="resources/js/vendor.js"></script>
