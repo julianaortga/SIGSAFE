@@ -3,40 +3,37 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the linea_g database table.
  * 
  */
 @Entity
-@Table(name="linea_g")
-@NamedQuery(name="LineaG.findAll", query="SELECT l FROM LineaG l")
+@Table(name = "linea_g")
+@NamedQuery(name = "LineaG.findAll", query = "SELECT l FROM LineaG l")
 public class LineaG implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_linea_g")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_linea_g")
 	private int idLineaG;
 
 	private String nombre;
 
 	private String observacion;
 
-	//bi-directional many-to-one association to TipoAve
+	// bi-directional many-to-one association to TipoAve
 	@ManyToOne
-	@JoinColumn(name="tipo_ave")
+	@JoinColumn(name = "tipo_ave")
 	private TipoAve tipoAveBean;
 
 	public LineaG() {
+		super();
 	}
 
-	public LineaG(int idLineaG, String nombre, String observacion, TipoAve tipoAveBean) {
+	public LineaG(int id) {
 		super();
-		this.idLineaG = idLineaG;
-		this.nombre = nombre;
-		this.observacion = observacion;
-		this.tipoAveBean = tipoAveBean;
+		this.idLineaG = id;
 	}
 
 	public LineaG(String nombre, String observacion, TipoAve tipoAveBean) {
@@ -46,6 +43,13 @@ public class LineaG implements Serializable {
 		this.tipoAveBean = tipoAveBean;
 	}
 
+	public LineaG(int idLineaG, String nombre, String observacion, TipoAve tipoAveBean) {
+		super();
+		this.idLineaG = idLineaG;
+		this.nombre = nombre;
+		this.observacion = observacion;
+		this.tipoAveBean = tipoAveBean;
+	}
 
 	public int getIdLineaG() {
 		return this.idLineaG;

@@ -30,31 +30,22 @@ public class TipoAve implements Serializable {
 	private List<Raza> razas;
 
 	public TipoAve() {
+		super();
 	}
 
-	public TipoAve(int idTipoAve, String nombre, List<LineaG> lineaGs, List<Raza> razas) {
+	public TipoAve(int id) {
 		super();
-		this.idTipoAve = idTipoAve;
-		this.nombre = nombre;
-		this.lineaGs = lineaGs;
-		this.razas = razas;
+		this.idTipoAve = id;
 	}
 
-	public TipoAve(String nombre, List<LineaG> lineaGs, List<Raza> razas) {
+	public TipoAve(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.lineaGs = lineaGs;
-		this.razas = razas;
 	}
 
 	public TipoAve(int id, String nombre) {
 		super();
 		this.idTipoAve = id;
-		this.nombre = nombre;
-	}
-
-	public TipoAve(String nombre) {
-		super();
 		this.nombre = nombre;
 	}
 

@@ -4,33 +4,45 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the raza database table.
  * 
  */
 @Entity
-@NamedQuery(name="Raza.findAll", query="SELECT r FROM Raza r")
+@NamedQuery(name = "Raza.findAll", query = "SELECT r FROM Raza r")
 public class Raza implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_raza")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_raza")
 	private int idRaza;
 
 	private String nombre;
 
-	//bi-directional many-to-one association to Ave
-	@OneToMany(mappedBy="razaBean")
+	// bi-directional many-to-one association to Ave
+	@OneToMany(mappedBy = "razaBean")
 	private List<Ave> aves;
 
-	//bi-directional many-to-one association to TipoAve
+	// bi-directional many-to-one association to TipoAve
 	@ManyToOne
-	@JoinColumn(name="tipo_ave")
+	@JoinColumn(name = "tipo_ave")
 	private TipoAve tipoAveBean;
 
 	public Raza() {
+		super();
+	}
+
+	public Raza(int id) {
+		super();
+		this.idRaza = id;
+	}
+
+	public Raza(String nombre, List<Ave> aves, TipoAve tipoAveBean) {
+		super();
+		this.nombre = nombre;
+		this.aves = aves;
+		this.tipoAveBean = tipoAveBean;
 	}
 
 	public Raza(int idRaza, String nombre, List<Ave> aves, TipoAve tipoAveBean) {
@@ -41,23 +53,15 @@ public class Raza implements Serializable {
 		this.tipoAveBean = tipoAveBean;
 	}
 
-	public Raza(String nombre, List<Ave> aves, TipoAve tipoAveBean) {
-		super();
-		this.nombre = nombre;
-		this.aves = aves;
-		this.tipoAveBean = tipoAveBean;
-	}
-	
-
 	public Raza(String nombre, TipoAve tipoAveBean) {
 		super();
 		this.nombre = nombre;
 		this.tipoAveBean = tipoAveBean;
 	}
-	
-	public Raza(int id,String nombre, TipoAve tipoAveBean) {
+
+	public Raza(int id, String nombre, TipoAve tipoAveBean) {
 		super();
-		this.idRaza=id;
+		this.idRaza = id;
 		this.nombre = nombre;
 		this.tipoAveBean = tipoAveBean;
 	}
