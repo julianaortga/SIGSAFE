@@ -28,7 +28,7 @@ public class UsuarioDao extends Conexion<Usuario> implements GenericDao<Usuario>
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			em.close(); // miremos a ver si así funciona
+			//em.close(); // miremos a ver si así funciona
 		}
 		return u;
 	}

@@ -27,7 +27,7 @@
 							value="<%=temporal.getNombre()%>" required>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="tipoAveBean">Tipo</label> <select name="tipoAveBean"
+						<label for="tipoAveBean">Tipo</label> <select name="tipoAveId"
 							class="form-control">
 							<option selected="selected">Seleccionar...</option>
 							<%
@@ -65,7 +65,7 @@
 							placeholder="Linea genética del ave" required>
 					</div>
 					<div class="form-group col-md-6">
-						<label for="tipoAveBean">Tipo</label> <select name="tipoAveBean"
+						<label for="tipoAveBean">Tipo</label> <select name="tipoAveId"
 							class="form-control">
 							<option selected="selected">Seleccionar...</option>
 							<%

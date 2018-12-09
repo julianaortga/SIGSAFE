@@ -19,7 +19,7 @@ public class SeguridadServlet extends HttpServlet {
 
 	protected void procesar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("hola, entré");
+		System.out.println("hola, entre");
 
 		String ruta = "";
 		Usuario sesion = new UsuarioDao().iniciarSession(request.getParameter("correo"),

@@ -21,6 +21,11 @@ public class LineaGeneticaServlet extends HttpServlet {
 
 	private void solve(HttpServletRequest request, HttpServletResponse response) {
 		try {
+			
+			int id = 0;
+			String nombre = "";
+			String observacion = "";
+			
 			String ruta = "";
 			int seleccion = Integer.parseInt(request.getParameter("seleccion"));
 			switch (seleccion) {
@@ -38,18 +43,24 @@ public class LineaGeneticaServlet extends HttpServlet {
 				ruta = "/WEB-INF/ave/consultar-lineas-geneticas.jsp";
 				break;
 			case 3: // Registrar
-				request.setAttribute("exito",
-						new LineaGDao()
-								.insert(new LineaG(request.getParameter("nombre"), request.getParameter("observacion"),
-										new TipoAveDao().find(Integer.parseInt(request.getParameter("tipoAveId"))))));
+				System.out.println("entra a registrar");
+				id =Integer.parseInt(request.getParameter("tipoAveId"));
+				nombre = request.getParameter("nombre").toString();
+				observacion = request.getParameter("observacion");
+				System.out.println("recibe bien los parametros");
+				
+				request.setAttribute("exito",new LineaGDao().insert(new LineaG(nombre,observacion ,new TipoAveDao().find(id))));
 				request.setAttribute("lista", new LineaGDao().list());
 				ruta = "/WEB-INF/ave/consultar-lineas-geneticas.jsp";
 				break;
 			case 4: // Actualizar
-				request.setAttribute("exito",
-						new LineaGDao().update(new LineaG(Integer.parseInt(request.getParameter("id")),
-								request.getParameter("nombre"), request.getParameter("obsercacion"),
-								new TipoAveDao().find(Integer.parseInt(request.getParameter("tipoAveBean"))))));
+				
+				id = Integer.parseInt(request.getParameter("id"));
+				int tipoAveId = Integer.parseInt(request.getParameter("tipoAveId"));
+				nombre = request.getParameter("nombre").toString();
+				observacion = request.getParameter("obsercacion");
+				
+				request.setAttribute("exito",new LineaGDao().update(new LineaG(id,nombre,observacion,new TipoAveDao().find(tipoAveId))));
 				request.setAttribute("lista", new LineaGDao().list());
 				ruta = "/WEB-INF/ave/consultar-lineas-geneticas.jsp";
 				break;

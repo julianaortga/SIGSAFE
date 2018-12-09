@@ -5,19 +5,18 @@
 	<div class="row text-center justify-content-md-center">
 		<div class="col-12">
 			<h2>Finca Experimental San Pablo - UFPS</h2>
-			<h3>Consulta de razas</h3>
+			<h3>Consulta de Lineas Genéticas</h3>
 			<hr>
 		</div>
 		<div class="col-md-10 col-sm-12 bd bgc-white p-20 text-left mT-40">
-			<h2>Listado de razas</h2>
+			<h2>Listado de Lineas Genéticas</h2>
 			<table id="dataTable" class="table table-striped table-bordered"
 				cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
-						<th>Observación
-						<th>
+						<th>Observación</th>
 						<th>Tipo de Ave</th>
 						<th width="30%">Acción</th>
 					</tr>
@@ -26,8 +25,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
-						<th>Observación
-						<th>
+						<th>Observación</th>
 						<th>Tipo de Ave</th>
 						<th>Acción</th>
 					</tr>
