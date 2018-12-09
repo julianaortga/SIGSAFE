@@ -16,46 +16,44 @@ import model.Usuario;
 @WebServlet("/seguridad")
 public class SeguridadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void procesar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String url="";
-		Usuario myUsuario;
-		UsuarioDao myUsuarioDao ;
-		int seleccion = Integer.parseInt(request.getParameter("seleccion"));
-		
-		switch(seleccion) {
-		case 1:
-			
-			String correo = request.getParameter("correo");
-			myUsuarioDao = new UsuarioDao();
-			myUsuario = myUsuarioDao.find(correo);
-            System.out.println("user"+myUsuario.getCorreo());
-            url = "/WEB-INF/index.jsp";
 
-			break;
+	protected void procesar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String ruta = "";
+		Usuario sesion = new UsuarioDao().iniciarSession(request.getParameter("correo"),
+				request.getParameter("contrasena"));
+		if (sesion != null) {
+			request.getSession().setAttribute("sesion", sesion);
+			ruta = "index?seleccion=1";
+		} else {
+			ruta = "login.jsp";
 		}
-		request.getRequestDispatcher(url).forward(request, response);
+		request.getRequestDispatcher(ruta).forward(request, response);
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SeguridadServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SeguridadServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		procesar(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

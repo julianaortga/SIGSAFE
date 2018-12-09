@@ -4,55 +4,59 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the ave database table.
  * 
  */
 @Entity
-@NamedQuery(name="Ave.findAll", query="SELECT a FROM Ave a")
+@NamedQuery(name = "Ave.findAll", query = "SELECT a FROM Ave a")
 public class Ave implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_ave")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_ave")
 	private int idAve;
 
 	private int edad;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_baja")
+	@Column(name = "fecha_baja")
 	private Date fechaBaja;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_ingreso")
+	@Column(name = "fecha_ingreso")
 	private Date fechaIngreso;
 
-	@Column(name="obs_inicial")
+	@Column(name = "obs_inicial")
 	private String obsInicial;
 
 	private float peso;
 
 	private String sexaje;
 
-	//bi-directional many-to-one association to Raza
+	// bi-directional many-to-one association to Raza
 	@ManyToOne
-	@JoinColumn(name="raza")
+	@JoinColumn(name = "raza")
 	private Raza razaBean;
 
-	//bi-directional many-to-one association to Galpon
+	// bi-directional many-to-one association to Galpon
 	@ManyToOne
-	@JoinColumn(name="galpon")
+	@JoinColumn(name = "galpon")
 	private Galpon galponBean;
 
 	public Ave() {
+		super();
 	}
 
-	public Ave(int idAve, int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje,
-			Raza razaBean, Galpon galponBean) {
+	public Ave(int id) {
 		super();
-		this.idAve = idAve;
+		this.idAve = id;
+	}
+
+	public Ave(int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje, Raza razaBean,
+			Galpon galponBean) {
+		super();
 		this.edad = edad;
 		this.fechaBaja = fechaBaja;
 		this.fechaIngreso = fechaIngreso;
@@ -63,9 +67,10 @@ public class Ave implements Serializable {
 		this.galponBean = galponBean;
 	}
 
-	public Ave(int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje, Raza razaBean,
-			Galpon galponBean) {
+	public Ave(int idAve, int edad, Date fechaBaja, Date fechaIngreso, String obsInicial, float peso, String sexaje,
+			Raza razaBean, Galpon galponBean) {
 		super();
+		this.idAve = idAve;
 		this.edad = edad;
 		this.fechaBaja = fechaBaja;
 		this.fechaIngreso = fechaIngreso;
