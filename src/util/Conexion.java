@@ -7,6 +7,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import model.Usuario;
+
 
 
 public class Conexion<T> {
@@ -90,5 +92,23 @@ public class Conexion<T> {
 			//em.close();
 		}
 		
+	}
+	
+	public Usuario iniciarSession(String correo, String clave) {
+		Usuario u = null;
+		try {
+			em.getTransaction().begin();
+			TypedQuery<Usuario> query = em.createQuery(
+					"SELECT u FROM Usuario u WHERE u.correo = :correo AND u.contrasena = :contrasena", Usuario.class);
+			query.setParameter("correo", correo);
+			query.setParameter("contrasena", clave);
+			em.getTransaction().commit();
+			u = query.getSingleResult();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			//em.close(); // miremos a ver si así funciona
+		}
+		return u;
 	}
 }

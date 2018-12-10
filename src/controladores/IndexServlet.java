@@ -30,7 +30,7 @@ public class IndexServlet extends HttpServlet {
 				break;
 			case 4: // Redireccionar a Alimentación
 				break;
-			case 5: // Redireccionara produccion
+			case 5: // Redireccionar a produccion
 				break;
 			default:
 				ruta = "index.jsp";

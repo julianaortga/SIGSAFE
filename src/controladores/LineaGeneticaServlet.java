@@ -58,7 +58,7 @@ public class LineaGeneticaServlet extends HttpServlet {
 				id = Integer.parseInt(request.getParameter("id"));
 				int tipoAveId = Integer.parseInt(request.getParameter("tipoAveId"));
 				nombre = request.getParameter("nombre").toString();
-				observacion = request.getParameter("obsercacion");
+				observacion = request.getParameter("observacion");
 				
 				request.setAttribute("exito",new LineaGDao().update(new LineaG(id,nombre,observacion,new TipoAveDao().find(tipoAveId))));
 				request.setAttribute("lista", new LineaGDao().list());

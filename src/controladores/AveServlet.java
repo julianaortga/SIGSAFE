@@ -1,6 +1,7 @@
 package controladores;
 
 import java.io.IOException;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
@@ -25,12 +26,17 @@ public class AveServlet extends HttpServlet {
 	protected void procesar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "";
-		SimpleDateFormat simpleFecha = new SimpleDateFormat("yyyy-mm-dd");
+		SimpleDateFormat simpleFecha = new SimpleDateFormat("yyyy-MM-dd");
 		int seleccion = Integer.parseInt(request.getParameter("seleccion"));
+		Date fecha1 = null;
+		Date fecha2 = null;
+		int id, edad = 0;
+		
 		switch (seleccion) {
 		case 1: // Formulario
 			try { // Actualizar
-				request.setAttribute("objeto", new AveDao().find(Integer.parseInt(request.getParameter("id"))));
+				id = Integer.parseInt(request.getParameter("id"));
+				request.setAttribute("objeto", new AveDao().find(id));
 			} catch (Exception ex) { // Registrar
 				ex.printStackTrace();
 			}
@@ -42,36 +48,43 @@ public class AveServlet extends HttpServlet {
 			request.setAttribute("lista", new AveDao().list());
 			url = "/WEB-INF/ave/consultar-aves.jsp";
 			break;
+
 		case 3: // Registrar ave
 			try {
+				fecha1 = simpleFecha.parse(request.getParameter("fechaBaja"));
+				fecha2 = simpleFecha.parse(request.getParameter("fechaIngreso"));
+				Date fechatemp1 = new Date(fecha1.getYear(), fecha1.getMonth(), fecha1.getDate());
+				Date fechatemp2 = new Date(fecha2.getYear(), fecha2.getMonth(), fecha2.getDate());
+				edad = Integer.parseInt(request.getParameter("edad"));
+
 				request.setAttribute("exito",
-						new AveDao().insert(new Ave(Integer.parseInt(request.getParameter("edad")),
-								simpleFecha.parse(request.getParameter("fechaBaja")),
-								simpleFecha.parse(request.getParameter("fechaIngreso")),
-								request.getParameter("obsInicial"), Float.parseFloat(request.getParameter("peso")),
-								request.getParameter("sexaje"),
+						new AveDao().insert(new Ave(edad, fechatemp2, fechatemp1, request.getParameter("observacion"),
+								Float.parseFloat(request.getParameter("peso")), request.getParameter("sexaje"),
 								new RazaDao().find(Integer.parseInt(request.getParameter("raza"))),
 								new GalponDao().find(Integer.parseInt(request.getParameter("galpon"))))));
-				request.setAttribute("lista", new AveDao().list());
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			request.setAttribute("lista", new AveDao().list());
 			url = "/WEB-INF/ave/consultar-aves.jsp";
 			break;
-		case 4: // Actualizar el ave
+		case 4: //Actualizar
 			try {
+				fecha1 = simpleFecha.parse(request.getParameter("fechaBaja"));
+				fecha2 = simpleFecha.parse(request.getParameter("fechaIngreso"));
+				Date fechatemp1 = new Date(fecha1.getYear(), fecha1.getMonth(), fecha1.getDate());
+				Date fechatemp2 = new Date(fecha2.getYear(), fecha2.getMonth(), fecha2.getDate());
+				edad = Integer.parseInt(request.getParameter("edad"));
 				request.setAttribute("exito",
-						new AveDao().update(new Ave(Integer.parseInt(request.getParameter("edad")),
-								simpleFecha.parse(request.getParameter("fechaBaja")),
-								simpleFecha.parse(request.getParameter("fechaIngreso")),
-								request.getParameter("obsInicial"), Float.parseFloat(request.getParameter("peso")),
-								request.getParameter("sexaje"),
+						new AveDao().update(new Ave(edad, fechatemp2, fechatemp1, request.getParameter("observacion"),
+								Float.parseFloat(request.getParameter("peso")), request.getParameter("sexaje"),
 								new RazaDao().find(Integer.parseInt(request.getParameter("raza"))),
 								new GalponDao().find(Integer.parseInt(request.getParameter("galpon"))))));
-				request.setAttribute("lista", new AveDao().list());
+
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
+			request.setAttribute("lista", new AveDao().list());
 			url = "/WEB-INF/ave/consultar-aves.jsp";
 			break;
 		}

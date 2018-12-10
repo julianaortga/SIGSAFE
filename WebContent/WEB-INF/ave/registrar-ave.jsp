@@ -34,15 +34,14 @@
 				</div>
 				<div class="form-group">
 					<label for="obsInicial">Observación inicial</label>
-					<textarea class="form-control" name="obsInicial"
-						placeholder="Ingresa la observación inicial"
+					<textarea class="form-control" name="observacion" placeholder="Ingresa la observación inicial"
 						value="<%=temporal.getObsInicial()%>"></textarea>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="peso">Peso (en gramos)</label> <input type="number"
 							class="form-control" name="peso" placeholder="Peso en gramos"
-							value="<%=temporal.getPeso()%>>" required>
+							value="<%=temporal.getPeso()%> " required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="edad">Edad (en meses)</label> <input type="number"
@@ -103,8 +102,9 @@
 				</fieldset>
 
 				<button type="submit" class="btn btn-danger">Guardar</button>
-				<a type="button" class="btn btn-light">Volver</a>
+				
 			</form>
+			<a href="index?seleccion=2"type="button" class="btn btn-light">Volver</a>
 			<%
 				} else {
 			%>
@@ -125,7 +125,7 @@
 				</div>
 				<div class="form-group">
 					<label for="obsInicial">Observación inicial</label>
-					<textarea class="form-control" name="obsInicial"
+					<textarea class="form-control" name="observacion"
 						placeholder="Ingresa la observación inicial"></textarea>
 				</div>
 				<div class="form-row">

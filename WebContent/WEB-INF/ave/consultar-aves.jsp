@@ -20,7 +20,7 @@
 						<th>Edad</th>
 						<th>Sexaje</th>
 						<th>Observacion</th>
-						<th>Galón</th>
+						<th>Galpón</th>
 						<th width="30%">Acción</th>
 					</tr>
 				</thead>
@@ -32,8 +32,7 @@
 						<th>Edad</th>
 						<th>Sexaje</th>
 						<th>Observación</th>
-						<th>Galpón
-						<th>
+						<th>Galpón</th>
 						<th>Acción</th>
 					</tr>
 				</tfoot>
